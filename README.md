@@ -22,11 +22,14 @@ Antes de começar, você vai precisar de:
 
 ```
 minicurso-devops-app/
+├── src/
+     └── main.py
+     └── database.py
+├── testes/
 ├── .env.example
 ├── .gitignore
-├── README.md
-├── config.py
-└── main.py
+└── README.md
+
 ```
 
 ## Como configurar
@@ -63,12 +66,13 @@ DB_PASSWORD=sua_senha
 DB_NAME=nome_do_seu_banco
 ```
 
-> ⚠️ O arquivo `.env` nunca deve ser enviado ao GitHub — ele já está listado no `.gitignore` para isso.
+> ⚠️ O arquivo `.env` nunca deve ser enviado ao GitHub, ele já está listado no `.gitignore` para isso.
 
 ### 4. Liberar seu IP no firewall do Azure
 
-No portal do Azure, dentro do seu servidor MySQL → **Networking** → **Firewall rules** → **Add current client IP address** → **Save**. Sem esse passo, a conexão é recusada mesmo com usuário e senha corretos.
+No portal do Azure, dentro do seu servidor MySQL → **Rede** → **Regras de Firewall** → **Adicionar o endereço IP do cliente atual** → **Salve**. Sem esse passo, a conexão é recusada mesmo com usuário e senha corretos.
 
+Caso seja necessário, pesquise pelo IP da sua máquina e preencha manualmente, de tempos em tempos esse endereço pode ser atualizado e não aparecer da forma correta na hora de 'Adicionar o endereço IP do cliente atual'.
 
 ### 5. Executar o projeto
 
@@ -97,18 +101,18 @@ Ao rodar, o programa mostra um menu:
 | Erro | O que fazer |
 |---|---|
 | `ModuleNotFoundError: No module named 'mysql'` | Rode `python -m pip install mysql-connector-python` usando o mesmo Python configurado no seu editor |
-| `Unknown database 'xxx'` | O nome em `DB_NAME` no `.env` não bate com o banco criado no Azure, ou o banco ainda não existe — confira o nome ou crie o banco pelo portal |
-| `Can't connect to MySQL server` | Seu IP não está liberado no firewall do Azure — veja o passo 4 |
+| `Unknown database 'xxx'` | O nome em `DB_NAME` no `.env` não bate com o banco criado no Azure, ou o banco ainda não existe, confira o nome ou crie o banco pelo portal |
+| `Can't connect to MySQL server` | Seu IP não está liberado no firewall do Azure, veja o passo 4 |
 | Menu não aparece / erro ao importar | Confira se está rodando `python main.py` de dentro da pasta do projeto, e se o `.env` está no mesmo lugar |
 
 ## Segurança
 
-- **Nunca** commite o arquivo `.env` — ele contém a senha do banco.
+- **Nunca** commite o arquivo `.env`, ele contém a senha do banco.
 - Use sempre o `.env.example` como referência de quais variáveis preencher, sem valores reais.
 - Se a senha do banco vazar acidentalmente (ex: print de tela, mensagem, commit por engano), troque-a imediatamente no portal do Azure.
 
 ## Sobre
 
-Projeto desenvolvido como material de apoio para o minicurso de DevOps do Scitech.
+Projeto desenvolvido pela equipe de instrutores do curso como material de apoio para o minicurso de DevOps do Scitech.
 
 
