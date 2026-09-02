@@ -1,0 +1,7 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Dúvidas gerais
+    url: https://github.com/renanolv7/project-devops-minicurso/discussions
+    about: Use nossa aba de Discussions para perguntas gerais.
+
