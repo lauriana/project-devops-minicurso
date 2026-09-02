@@ -1,8 +1,7 @@
-from config import connect_bd
+from src.database import connect_bd
 
 # Conecta ao banco de dados uma única vez, quando o programa inicia
 conexão = connect_bd()
-
 
 def cadastrar_produto():
     # Pergunta o nome e o valor, e salva um novo produto no banco
@@ -34,10 +33,9 @@ def visualizar_produtos():
         print("Nenhum produto cadastrado ainda.\n")
         return
 
-    print("\n--- PRODUTOS CADASTRADOS ---")
+    print("\n--- PRODUTOS CADASTRADOS ---\n")
     for nome_produto, valor in produtos:
-        print(f"{nome_produto} - R$ {valor:.2f}")
-    print()
+        print(f"   {nome_produto} - R$ {valor:.2f}")
 
 def exibir_menu():
     print("===========================================")
