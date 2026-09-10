@@ -39,7 +39,7 @@ minicurso-devops-app/
 Dê fork neste repositório pelo GitHub e depois clone a sua cópia:
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repo.git](https://github.com/renanolv7/project-devops-minicurso.git
+git clone https://github.com/seu-usuario/nome-do-repo.git
 cd nome-do-repo
 ```
 
@@ -77,7 +77,7 @@ Caso seja necessário, pesquise pelo IP da sua máquina e preencha manualmente, 
 ### 5. Executar o projeto
 
 ```bash
-python main.py
+python src/main.py
 ```
 
 ## Como usar
