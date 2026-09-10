@@ -42,19 +42,36 @@ git clone https://github.com/seu-usuario/nome-do-repo.git
 cd nome-do-repo
 ```
 
-### 2. Instalar as dependências
+### 2. Criar ambiente e instalar bibliotecas.
+
+Criar ambiente:
+```bash
+python -m venv .venv
+```
+
+Ativar ambiente:
+```bash
+.venv\Scripts\activate.bat
+```
+
+#### Instalar todas as dependências necessárias
 
 ```bash
 python -m pip install mysql-connector-python python-dotenv
 ```
 
-### 3. Configurar a conexão com o banco.
+Desativar para sair do ambiente virtual:
+```bash
+deactivate
+```
+
+### 4. Configurar a conexão com o banco.
 
 Há várias formas diferentes de conectar uma aplicação ao servidor do banco de dados. Seja ela por um SGBD, string de conexão no próprio código, extensões... 
 
 Abaixo separamos duas formas diferentes, como exemplo, para se realizar essa conexão.
 
-**3.1  Via aplicação Python (`.env`)**
+**4.1  Via aplicação Python (`.env`)**
  
 É como o próprio programa se conecta para cadastrar e visualizar produtos. 
 
@@ -83,7 +100,7 @@ Em seguida rode o arquivo `main`:
 python src/main.py
 ```
  
-**3.2  Via extensão MySQL no VS Code**
+**4.2  Via extensão MySQL no VS Code**
  
 Forma visual, útil para criar o banco/tabela antes de rodar o programa ou conferir os dados depois. Instale a extensão **MySQL**, crie uma nova conexão com os mesmos dados do `.env` (host, usuário, senha, porta `3306`).
  
@@ -105,7 +122,7 @@ CREATE TABLE produtos (
 );
 ```
 
-### 4. Liberar seu IP no firewall do Azure
+### 5. Liberar seu IP no firewall do Azure
 
 No portal do Azure, dentro do seu servidor MySQL → **Rede** → **Regras de Firewall** → **Adicionar o endereço IP do cliente atual** → **Salve**. Sem esse passo, a conexão é recusada mesmo com usuário e senha corretos.
 
@@ -113,7 +130,7 @@ Caso seja necessário, pesquise pelo IP da sua máquina e preencha manualmente, 
 
 ### Falhou? Confira nessa ordem: host → porta → usuário → senha → firewall → internet → status do servidor no Azure.
 
-### 5. Executar o projeto
+### 6. Executar o projeto
 
 ```bash
 python src/main.py
