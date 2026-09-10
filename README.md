@@ -111,6 +111,8 @@ No portal do Azure, dentro do seu servidor MySQL → **Rede** → **Regras de Fi
 
 Caso seja necessário, pesquise pelo IP da sua máquina e preencha manualmente, de tempos em tempos esse endereço pode ser atualizado e não aparecer da forma correta na hora de 'Adicionar o endereço IP do cliente atual'.
 
+### Falhou? Confira nessa ordem: host → porta → usuário → senha → firewall → internet → status do servidor no Azure.
+
 ### 5. Executar o projeto
 
 ```bash
