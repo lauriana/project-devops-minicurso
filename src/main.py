@@ -1,4 +1,4 @@
-from src.database import connect_bd
+from database import connect_bd
 
 # Conecta ao banco de dados uma única vez, quando o programa inicia
 conexão = connect_bd()
