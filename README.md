@@ -1,6 +1,6 @@
 # Minicurso DevOps — Cadastro de Produtos 
 
-Sistema simples de cadastro de produtos via terminal, feito em Python com banco de dados MySQL rodando no Azure. Projeto base do minicurso de DevOps, usado para praticar Git/GitHub, Cloud.
+Sistema simples de cadastro de produtos via terminal, feito em Python com banco de dados MySQL rodando no Azure. Projeto base do minicurso de DevOps, usado para praticar Git/GitHub, Cloud, Conceitos de conexão entre aplicação e servidor.
 
 ## O que o projeto faz
 
@@ -29,7 +29,6 @@ minicurso-devops-app/
 ├── .env.example
 ├── .gitignore
 └── README.md
-
 ```
 
 ## Como configurar
@@ -49,24 +48,62 @@ cd nome-do-repo
 python -m pip install mysql-connector-python python-dotenv
 ```
 
-### 3. Configurar a conexão com o banco (.env)
+### 3. Configurar a conexão com o banco.
+
+Há várias formas diferentes de conectar uma aplicação ao servidor do banco de dados. Seja ela por um SGBD, string de conexão no próprio código, extensões... 
+
+Abaixo separamos duas formas diferentes, como exemplo, para se realizar essa conexão.
+
+**3.1  Via aplicação Python (`.env`)**
+ 
+É como o próprio programa se conecta para cadastrar e visualizar produtos. 
 
 Copie o arquivo de exemplo e renomeie:
-
+ 
 ```bash
 cp .env.example .env
 ```
 
-Abra o `.env` e preencha com os dados do **seu** servidor Azure (você anota esses dados na hora que cria o servidor no portal):
-
+Preencher o arquivo `.env`:
+ 
 ```
 DB_HOST=seu-servidor.mysql.database.azure.com
 DB_USER=seu_usuario_admin
 DB_PASSWORD=sua_senha
 DB_NAME=nome_do_seu_banco
 ```
+ 
+Os dados acima são encontrados no seu servidor Azure (você anota esses dados na hora que cria o servidor no portal).
+ 
+⚠️ O arquivo `.env` nunca deve ser enviado ao GitHub, ele já está listado no `.gitignore` para isso.
 
-> ⚠️ O arquivo `.env` nunca deve ser enviado ao GitHub, ele já está listado no `.gitignore` para isso.
+Em seguida rode o arquivo `main`:
+
+```bash
+python src/main.py
+```
+ 
+**3.2  Via extensão MySQL no VS Code**
+ 
+Forma visual, útil para criar o banco/tabela antes de rodar o programa ou conferir os dados depois. Instale a extensão **MySQL**, crie uma nova conexão com os mesmos dados do `.env` (host, usuário, senha, porta `3306`).
+ 
+> ⚠️ A extensão não lê o `.env` automaticamente, você preenche os dados de novo, direto na interface.
+
+Para executar comandos SQL através da extensão, crie um novo arquivo de Query, como na imagem abaixo:
+
+<img width="347" height="177" alt="image" src="https://github.com/user-attachments/assets/fb862328-d265-49be-b12c-f0cd9389c5bd" />
+
+Um exemplo de SQL:
+
+```sql
+CREATE DATABASE IF NOT EXISTS loja;
+USE loja;
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    valor DECIMAL(10, 2) NOT NULL
+);
+```
 
 ### 4. Liberar seu IP no firewall do Azure
 
@@ -103,7 +140,7 @@ Ao rodar, o programa mostra um menu:
 | `ModuleNotFoundError: No module named 'mysql'` | Rode `python -m pip install mysql-connector-python` usando o mesmo Python configurado no seu editor |
 | `Unknown database 'xxx'` | O nome em `DB_NAME` no `.env` não bate com o banco criado no Azure, ou o banco ainda não existe, confira o nome ou crie o banco pelo portal |
 | `Can't connect to MySQL server` | Seu IP não está liberado no firewall do Azure, veja o passo 4 |
-| Menu não aparece / erro ao importar | Confira se está rodando `python main.py` de dentro da pasta do projeto, e se o `.env` está no mesmo lugar |
+| Menu não aparece / erro ao importar | Confira se está rodando `python src/main.py` de dentro da pasta do projeto, e se o `.env` está no mesmo lugar |
 
 ## Segurança
 
