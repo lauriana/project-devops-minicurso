@@ -12,11 +12,12 @@ Um CRUD bem enxuto, com apenas duas operações:
 
 Antes de começar, você vai precisar de:
 
-- [Python 3.10+](https://www.python.org/downloads/) instalado na máquina
 - Uma conta no [Azure](https://azure.microsoft.com/free/) (recomendado: [Azure for Students](https://azure.microsoft.com/free/students/), não precisa de cartão de crédito)
-- Um servidor **Azure Database for MySQL – Flexible Server** já criado, com um banco de dados dentro dele
+- [Python 3.10+](https://www.python.org/downloads/) instalado na máquina
+- pyodbc instalado na máquina (ODBC Driver 18 for SQL Server).
 - [Git](https://git-scm.com/) instalado
 - [VS Code](https://code.visualstudio.com/) (recomendado, mas qualquer editor funciona)
+
 
 ## Estrutura do projeto
 
