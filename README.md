@@ -61,7 +61,7 @@ Ativar ambiente:
 #### Instalar todas as dependências necessárias
 
 ```bash
-python -m pip install mysql-connector-python python-dotenv
+python -m pip install pyodbc python-dotenv
 ```
 
 Desativar para sair do ambiente virtual:
