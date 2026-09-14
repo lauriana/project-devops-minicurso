@@ -10,9 +10,9 @@ def cadastrar_produto():
     nome_produto = input("Nome do produto: ")
     valor = float(input("Valor do produto: "))
 
-    # Usamos %s como "espaço reservado" para os valores. O banco preenche
+    # Usamos '?' como "espaço reservado" para os valores. O banco preenche
     # esses espaços de forma segura, sem risco de SQL Injection.
-    query = "INSERT INTO produtos (nome_produto, valor) VALUES (%s, %s)"
+    query = "INSERT INTO produtos (nome_produto, valor) VALUES (?, ?)"
     cursor.execute(query, (nome_produto, valor))
     conexão.commit()
 
@@ -33,16 +33,18 @@ def visualizar_produtos():
         print("Nenhum produto cadastrado ainda.\n")
         return
 
-    print("\n--- PRODUTOS CADASTRADOS ---\n")
+    print("\n________ PRODUTOS CADASTRADOS _________\n")
     for nome_produto, valor in produtos:
-        print(f"   {nome_produto} - R$ {valor:.2f}")
+        print(f" {nome_produto} - R$ {valor:.2f}")
+    print("_________________________________________\n")
 
 def exibir_menu():
     print("===========================================")
     print("=      (1) - Cadastrar produto            =")
     print("=      (2) - Visualizar produtos          =")
     print("=      (3) - Sair                         =")
-    print("===========================================")
+    print("===========================================\n")
+    
 
 def main():
     while True:
