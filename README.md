@@ -73,7 +73,9 @@ deactivate
 
 Há várias formas diferentes de conectar uma aplicação ao servidor do banco de dados. Seja ela por um SGBD, string de conexão no próprio código, extensões... 
 
-Abaixo separamos duas formas diferentes, como exemplo, para se realizar essa conexão.
+#### Antes de prosseguir, encontrará a pasta (`sql`) com o arquivo (`setup_inicial_db.sql`), execute esse arquivo. O arquivo é responsável pela criação da tabela PRODUTOS e inserção de alguns produtos para teste.
+
+Após o setup inicial, separamos duas formas diferentes possíveis de se a realizar a conexão ao banco de dados:
 
 **4.1  Via aplicação Python (`.env`)**
  
@@ -104,25 +106,22 @@ Em seguida rode o arquivo `main`:
 python src/main.py
 ```
  
-**4.2  Via extensão MySQL no VS Code**
+**4.2  Via extensão SQL Server no VS Code**
  
-Forma visual, útil para criar o banco/tabela antes de rodar o programa ou conferir os dados depois. Instale a extensão **MySQL**, crie uma nova conexão com os mesmos dados do `.env` (host, usuário, senha, porta `3306`).
+Forma visual, útil para criar tabelas e consultas. Instale a extensão **SQL server**, crie uma nova conexão com os mesmos dados do `.env` (host, usuário, senha, porta `1433`).
  
 > ⚠️ A extensão não lê o `.env` automaticamente, você preenche os dados de novo, direto na interface.
 
 Para executar comandos SQL através da extensão, crie um novo arquivo de Query, como na imagem abaixo:
 
-<img width="347" height="177" alt="image" src="https://github.com/user-attachments/assets/fb862328-d265-49be-b12c-f0cd9389c5bd" />
 
 Um exemplo de SQL:
 
 ```sql
-CREATE DATABASE IF NOT EXISTS loja;
-USE loja;
 CREATE TABLE produtos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    valor DECIMAL(10, 2) NOT NULL
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    nome_produto VARCHAR(100) NOT NULL,
+    valor DECIMAL(10,2) NOT NULL
 );
 ```
 
