@@ -1,4 +1,4 @@
-from mysql.connector import connect, Error
+import pyodbc
 import os
 from dotenv import load_dotenv
 
@@ -6,16 +6,20 @@ load_dotenv()
 
 def connect_bd():
     try:
-        config = {
-            'host': os.getenv('DB_HOST'),
-            'user': os.getenv('DB_USER'),
-            'password': os.getenv('DB_PASSWORD'),
-            'database': os.getenv('DB_NAME')
-        }
-        conn = connect(**config)
+        conn_str = (
+            f"DRIVER={{ODBC Driver 18 for SQL Server}};"
+            f"SERVER={os.getenv('DB_HOST')};"
+            f"UID={os.getenv('DB_USER')};"
+            f"PWD={os.getenv('DB_PASSWORD')};"
+            f"DATABASE={os.getenv('DB_NAME')};"
+            "Encrypt=yes;"
+            "TrustServerCertificate=no;"
+            "Connection Timeout=30;"
+        )
+        conn = pyodbc.connect(conn_str)
         print("Conectado ao banco com sucesso!")
         return conn
-    except Error as e:
+    except pyodbc.Error as e:
         print(f"Erro ao conectar: {e}")
         return None
 
