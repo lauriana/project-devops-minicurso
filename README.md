@@ -21,11 +21,14 @@ Antes de começar, você vai precisar de:
 ## Estrutura do projeto
 
 ```
-minicurso-devops-app/
+project-devops-minicurso/
 ├── src/
-     └── main.py
-     └── database.py
-├── testes/
+│   ├── database.py
+│   ├── main.py
+│   └── sql/                     
+│       └── criar_tebela.sql
+├── tests/
+├── .env
 ├── .env.example
 ├── .gitignore
 └── README.md
