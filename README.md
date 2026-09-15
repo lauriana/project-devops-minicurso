@@ -127,7 +127,7 @@ CREATE TABLE produtos (
 
 ### 5. Liberar seu IP no firewall do Azure
 
-No portal do Azure, dentro do seu servidor MySQL → **Rede** → **Regras de Firewall** → **Adicionar o endereço IP do cliente atual** → **Salve**. Sem esse passo, a conexão é recusada mesmo com usuário e senha corretos.
+No portal do Azure, dentro do seu banco de dados SQL, acesse **Propriedades** → **Rede** → **Regras de Firewall** → **Adicionar o endereço IP do cliente atual** → **Salve**. Sem esse passo, a conexão é recusada mesmo com usuário e senha corretos.
 
 Caso seja necessário, pesquise pelo IP da sua máquina e preencha manualmente, de tempos em tempos esse endereço pode ser atualizado e não aparecer da forma correta na hora de 'Adicionar o endereço IP do cliente atual'.
 
