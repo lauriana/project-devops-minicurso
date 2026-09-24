@@ -1,6 +1,6 @@
 # Minicurso DevOps — Cadastro de Produtos 
 
-Sistema simples de cadastro de produtos via terminal, feito em Python com banco de dados MySQL rodando no Azure. Projeto base do minicurso de DevOps, usado para praticar Git/GitHub, Cloud, Conceitos de conexão entre aplicação e servidor.
+Sistema simples de cadastro de produtos via terminal, feito em Python com banco de dados SQL Server (Azure SQL Database) rodando no Azure. Projeto base do minicurso de DevOps, usado para praticar Git/GitHub, Cloud, Conceitos de conexão entre aplicação e servidor.
 
 ## O que o projeto faz
 
@@ -90,7 +90,7 @@ cp .env.example .env
 Preencher o arquivo `.env`:
  
 ```
-DB_HOST=seu-servidor.mysql.database.azure.com
+DB_HOST=seu-servidor.database.windows.net
 DB_USER=seu_usuario_admin
 DB_PASSWORD=sua_senha
 DB_NAME=nome_do_seu_banco
@@ -159,10 +159,10 @@ Ao rodar, o programa mostra um menu:
 
 | Erro | O que fazer |
 |---|---|
-| `ModuleNotFoundError: No module named 'mysql'` | Rode `python -m pip install mysql-connector-python` usando o mesmo Python configurado no seu editor |
+| `ModuleNotFoundError: No module named 'pyodbc'` | Rode `python -m pip install pyodbc` usando o mesmo Python configurado no seu editor |
 | `Unknown database 'xxx'` | O nome em `DB_NAME` no `.env` não bate com o banco criado no Azure, ou o banco ainda não existe, confira o nome ou crie o banco pelo portal |
-| `Can't connect to MySQL server` | Seu IP não está liberado no firewall do Azure, veja o passo 4 |
-| `Authentication plugin 'caching_sha2_password' is not supported` | O erro corre porque o MySQL 8+ usa por padrão o plugin de autenticação caching_sha2_password, mas a biblioteca que você está usando no Python está desatualizada ou não reconhece esse método nativamente. Instalar a biblioteca correta. |
+| `Erro ao conectar` (timeout) | Seu IP não está liberado no firewall do Azure, veja o passo 5 |
+| `[IM002] Data source name not found and no default driver specified` | O driver ODBC 18 for SQL Server não está instalado corretamente na sua máquina — reinstale seguindo o passo de Pré-requisitos |
 | Menu não aparece / erro ao importar | Confira se está rodando `python src/main.py` de dentro da pasta do projeto, e se o `.env` está no mesmo lugar |
 
 
